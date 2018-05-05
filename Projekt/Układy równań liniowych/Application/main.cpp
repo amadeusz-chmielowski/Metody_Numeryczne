@@ -31,28 +31,28 @@ int main() {
 ////////////////////////////////////////////////////////////
 	///cout << "Zadanie D" << endl;
 ////////////////////////////////////////////////////////////
-	//E.initC();
-	//cout << "Norma z residuum w tym przypadku wynosi: " << E.metodaLU() << endl;
+	E.initC();
+	cout << "Norma z residuum w przpadku LU wynosi: " << E.metodaLU() << endl;
 
 ////////////////////////////////////////////////////////////
 	///cout << "Zadanie E" << endl;
 ////////////////////////////////////////////////////////////
-	int Ns[] = { 100, 500, 1000, 2000, 3000 };
-	int nSize = 5;
-	cout << "Metoda Jacobiego" << endl;
-	for (int i = 0; i < nSize; i++) {
-		Equation X(Ns[i]);
-		cout << "N = " << Ns[i] << " czas: " << time(X, &Equation::initA, &Equation::metodaJacobiego) << "s" << endl;
-	}
-	cout << "\nMetoda Gaussa-Seidla" << endl;
-	for (int i = 0; i < nSize; i++) {
-		Equation X(Ns[i]);
-		cout << "N = " << Ns[i] << " czas: " << time(X, &Equation::initA, &Equation::metodaGaussaSeidla) << "s" << endl;
-	}
-	cout << "\nMetoda LU" << endl;
-	for (int i = 0; i < nSize; i++) {
-		Equation X(Ns[i]);
-		cout << "N = " << Ns[i] << "\ czas: " << time(X, &Equation::initA, &Equation::metodaLU) << "s" << endl;
-	}
+	//int Ns[] = { 100, 500, 1000, 2000, 3000 };
+	//int nSize = 5;
+	//cout << "Metoda Jacobiego" << endl;
+	//for (int i = 0; i < nSize; i++) {
+	//	Equation X(Ns[i]);
+	//	cout << "N = " << Ns[i] << " czas: " << time(X, &Equation::initA, &Equation::metodaJacobiego) << "s" << endl;
+	//}
+	//cout << "\nMetoda Gaussa-Seidla" << endl;
+	//for (int i = 0; i < nSize; i++) {
+	//	Equation X(Ns[i]);
+	//	cout << "N = " << Ns[i] << " czas: " << time(X, &Equation::initA, &Equation::metodaGaussaSeidla) << "s" << endl;
+	//}
+	//cout << "\nMetoda LU" << endl;
+	//for (int i = 0; i < nSize; i++) {
+	//	Equation X(Ns[i]);
+	//	cout << "N = " << Ns[i] << "\ czas: " << time(X, &Equation::initA, &Equation::metodaLU) << "s" << endl;
+	//}
 	system("pause");
 }

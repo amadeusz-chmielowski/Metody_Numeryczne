@@ -1,6 +1,6 @@
 #pragma once
 #include "Matrix.h"
-
+#include <iostream>
 #define f 5
 #define a1A 5+1
 #define a1C 3
@@ -55,25 +55,24 @@ public:
 		matrix U(N, N);
 		//Podzia³
 		for (int i = 0; i < N; i++)
-			L[i][i] = 1;
+			L[i][i] = 1.0;
 
-		for (int i = 0; i < N; i++) {
-			for (int j = i; j < N; j++) {
+		for (int j = 0; j < N; j++) {
+			for (int i = 0; i <= j; i++) {
 				U[i][j] += A[i][j];
 				for (int k = 0; k <= i - 1; k++)
 					U[i][j] -= L[i][k] * U[k][j];
 
 			}
 
-			for (int j = i + 1; j < N; j++) {
-				for (int k = 0; k <= i - 1; k++)
-					L[j][i] -= L[j][k] * U[k][i];
+			for (int i = j+1; i < N; i++) {
+				for (int k = 0; k <= j - 1; k++)
+					L[i][j] -= L[i][k] * U[k][j];
 
-				L[j][i] += A[j][i];
-				L[j][i] /= U[i][i];
+				L[i][j] += A[i][j];
+				L[i][j] /= U[j][j];
 			}
 		}
-
 		matrix y(N, 1);
 		//Podstawienie w przód dla Ly = b
 		for (int i = 0; i < N; i++) {
