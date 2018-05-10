@@ -1,7 +1,7 @@
 #pragma once
 #include "Matrix.h"
 #include <iostream>
-#define f 5
+#define f 6
 #define a1A 5+1
 #define a1C 3
 #define a2 -1
@@ -16,7 +16,7 @@ private:
 	int N;
 public:
 
-	int metodaJacobiego() {
+	double metodaJacobiego() {
 		matrix xtemp(x);
 		for (int t = 1; ; t++) {
 			for (int i = 0; i < N; i++) {
@@ -34,7 +34,7 @@ public:
 				return t;
 		}
 	}
-	int metodaGaussaSeidla() {
+	double metodaGaussaSeidla() {
 		for (int t = 1; ; t++) {
 			for (int i = 0; i < N; i++) {
 				double val = b[i][0];
@@ -45,12 +45,11 @@ public:
 				val /= A[i][i];
 				x[i][0] = val;
 			}
-
 			if (matrix::norm(A * x - b) <= e)
 				return t;
 		}
 	}
-	int metodaLU() {
+	double metodaLU() {
 		matrix L(N, N);
 		matrix U(N, N);
 		//Podzia³
@@ -87,7 +86,7 @@ public:
 		//Podstawienie wstecz dla Ux = y
 		for (int i = N - 1; i >= 0; i--) {
 			double val = y[i][0];
-			for (int j = 0; j < N; j++) {
+			for (int j = i; j < N; j++) {
 				if (j != i) val -= U[i][j] * x[j][0];
 			}
 
